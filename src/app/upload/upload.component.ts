@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {Media} from '../models/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-upload',
@@ -30,7 +31,9 @@ export class UploadComponent implements OnInit {
     this.mediaService.uploadMedia(localStorage.getItem('token'), this.formData).
         subscribe(response => {
           console.log(response);
-          setTimeout(() => {this.router.navigate(['front'])}, 1000);
+          setTimeout(() => {
+            this.router.navigate(['front']);
+          }, 1000);
         }, (error: HttpErrorResponse) => {
           console.log(error);
         });
